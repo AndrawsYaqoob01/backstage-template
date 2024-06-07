@@ -1,24 +1,10 @@
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
-  name: my-component
-  description: This is my awesome component
-  tags:
-    - example
-    - demo
+  name: backstage-template
   annotations:
-    backstage.io/techdocs-ref: url:https://github.com/your-org/your-repo/blob/main/docs
-    github.com/project-slug: your-org/your-repo
+    github.com/project-slug: AndrawsYaqoob01/backstage-template
 spec:
-  type: service
-  lifecycle: production
-  owner: team-a
-  system: my-system
-  providesApis:
-    - my-api
-  consumesApis:
-    - other-api
-  dependsOn:
-    - resource:my-resource
-  subcomponents:
-    - my-subcomponent
+  type: other
+  lifecycle: unknown
+  owner: guests
