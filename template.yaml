@@ -1,0 +1,42 @@
+apiVersion: backstage.io/v1alpha1
+kind: Template
+metadata:
+  name: react-template
+  title: Create React App Template
+  description: Scaffolds a new Create React App project
+  tags:
+    - react
+    - web
+    - javascript
+spec:
+  owner: team-a
+  type: website
+  path: .
+  schema:
+    required:
+      - name
+    properties:
+      name:
+        title: Name
+        type: string
+        description: The name of the project
+        ui:field: ProjectNamePicker
+  steps:
+    - id: fetch
+      name: Fetch
+      action: fetch:template
+      input:
+        url: https://github.com/your-org/your-template-repo
+        repoUrl: https://github.com/your-org/your-template-repo
+        targetPath: ./{{ cookiecutter.name }}
+    - id: template
+      name: Template
+      action: cookiecutter
+      input:
+        templateName: your-template-repo
+        values:
+          name: '{{ parameters.name }}'
+  output:
+    links:
+      - url: '{{ steps.fetch.output.targetPath }}/README.md'
+        title: Open Readme
